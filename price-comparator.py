@@ -35,7 +35,7 @@ digicol5 = [point.text.strip() for point in digicol5]
 
 #digicol6 = soup.findAll('td',attrs={'class','tr-mfgPartNumber'},limit=3)
 for point in soup.findAll('td',attrs={'class','tr-mfgPartNumber'},limit=3):
-    digicol6.append(point.find('a'))
+    digicol6.append(point.find('a').get('href'))
     
 
-print(digicol6[1])   
+print(digicol6)   
