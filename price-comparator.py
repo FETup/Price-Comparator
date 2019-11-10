@@ -11,7 +11,7 @@ page = requests.get(url,headers=headers)
 soup = BeautifulSoup(page.content,'html.parser')
 
 digicol4 = []
-digicol = []
+digicol6 = []
 
 digicol1 = soup.findAll('td',attrs={'class':'tr-mfgPartNumber'},limit=3)
 
@@ -33,7 +33,9 @@ for hit in soup.findAll('td',attrs={'class':'tr-minQty ptable-param'},limit=3):
 digicol5= soup.findAll('td',attrs={'class':'tr-unitPrice ptable-param'},limit=3)
 digicol5 = [point.text.strip() for point in digicol5]
 
-digicol6 = soup.findall('td',attrs={'class','tr-dkPartNumber nowrap-culture'})
-digicol6 = digicol6.find('a')
+#digicol6 = soup.findAll('td',attrs={'class','tr-mfgPartNumber'},limit=3)
+for point in soup.findAll('td',attrs={'class','tr-mfgPartNumber'},limit=3):
+    digicol6.append(point.find('a'))
+    
 
-print(digicol6.get('href'))   
+print(digicol6[1])   
